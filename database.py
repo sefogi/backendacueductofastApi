@@ -6,9 +6,9 @@ from pydantic import BaseModel
 MONGO_DETAILS = "mongodb://localhost:27017"
 
 client = AsyncIOMotorClient(MONGO_DETAILS)
-database = client.acueducto
+database = client.Acueducto_LaMarina
 
-usuarios_collection = database.get_collection("usuarios")
+usuarios_collection = database.get_collection("Usuarios")
 
 # Función para convertir un documento de MongoDB a un diccionario de Python
 def usuario_helper(usuario) -> dict:
@@ -17,6 +17,6 @@ def usuario_helper(usuario) -> dict:
         "contrato": usuario["contrato"],
         "nombre": usuario["nombre"],
         "apellidos": usuario["apellidos"],
-        "lectura": usuario["lectura"],
+        "lectura": float(usuario["lectura"]),
         "direccion": usuario["direccion"],
     }
